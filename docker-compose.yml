@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  web:
+    build: .
+    command: bash -c "npm install -no-bin-links && nodemon --inspect=5858"
+    depends_on:
+      - "redis"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+      - "5858:5858"
+  redis:
+    image: redis:4.0.14
+    entrypoint: redis-server --appendonly yes
+    volumes: 
+      - ./data:/data 
+    expose:
+      - "6379"
