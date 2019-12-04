@@ -7,7 +7,7 @@ services:
     ports:
       - "81:8000"
   redis:
-    image: redis:4.0.14
+    image: redis:5.0.7
     entrypoint: redis-server --appendonly yes
     volumes: 
       - ./data:/data 
